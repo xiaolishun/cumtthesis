@@ -1,0 +1,271 @@
+
+\chapter{BSDE 的 $L^1$ 解的存在唯一性}{An existence and
+uniqueness result for $L^1$ solutions of BSDEs}
+\label{cha:FiniteTimeInterval}
+
+在本节中, 我们考虑如下一维倒向随机微分方程:
+\begin{equation}\label{eq:BSDEsInFiniteTimeInterval}
+  y_t=\xi+\intT{t} g(s,y_s,z_s)\dif s-\intT{t} z_s\cdot\dif B_s,\quad t\in\tT,
+\end{equation}
+其中 $\xi$ 在 $\rtn$ 中取值; $T$ 有限, 即 $0\leq T<+\infty$; 生成元 $g$ 定义如下
+$$g(\omega,t,y,z):\Omega\times\tT\times\rtn\times\rtn^d\mapsto \rtn,$$
+且对任意的 $(y,z)\in\rtn\times\rtn^d$, $g(\cdot,\cdot,y,z)$ 为
+$(\F_t)$-循序可测的随机函数. 即在本节中, 我们总假定 $k=1$.
+
+\begin{definition}\label{def:DefinitionOfBSDEInFiniteTimeInterval}
+  BSDE \eqref{eq:BSDEsInFiniteTimeInterval} 的解是指一对在空间 $\rtn\times\rtn^d$
+  中取值的 $(\F_t)$-适应过程 $(y_t,z_t)_{t\in\tT}$, 它们满足 $\prs$, $t\mapsto y_t$
+  连续, $t\mapsto z_t$ 属于空间 $L^2(0,T)$, $t\mapsto g(t,y_t,z_t)$ 属于空间 $L^1(0,T)$,
+  并且 $\prs$, 对于任意的 $t\in\tT$, BSDE \eqref{eq:BSDEsInFiniteTimeInterval} 恒成立.
+\end{definition}
+
+\citet*{PardouxPeng1990SCL} 首先研究了这种方程的非线性形式, 并且在生成元 $g$ 满足
+ Lipschitz 条件下建立了参数平方可积的多维 BSDE 的解的存在惟一性. 从此之后,
+很多学者致力于减弱生成元 $g$ 的 Lipschitz 条件, 例如, \citet*{Mao1995SPA},
+\cite*{LepeltierSanMartin1997SPL} 等. 众所周知, 求解参数仅仅可积的 BSDE 要比求解参
+数平方可积的 BSDE 困难. 据我们所知, 仅有几篇文章研究了参数仅仅可积的 BSDE, 如
+\citet*{BriandDelyonHu2003SPA}. 我们主要研究一类终端时
+间 $T$ 有限且参数仅仅可积的一维 BSDEs 的 $L^1$ 解的存在惟一性, 其中生成元 $g$
+关于 $y$ 是 Lipschitz 连续, 关于 $z$ 是 $\alpha$-H\"{o}lder 连续的, 其中
+ $0<\alpha<1$. 此部分结果已发表在 Statistics and Probability Letters, 可见
+ \citet*{FanLiu2010SPL}.
+
+首先介绍需要用到的假设条件.
+
+\begin{enumerate}
+\renewcommand{\theenumi}{(B\arabic{enumi})}
+\renewcommand{\labelenumi}{\theenumi}
+
+  \item\label{HInFiniteTimeInterval:OnlyIntegrable}
+          $\EX
+          \left[|\xi|+
+              \intT{0}|g(t,0,0)|\dif t
+          \right]<+\infty$;
+  \item\label{HInFiniteTimeInterval:LipschitzAndAlphaHolder}
+       存在两个常数 $\mu$, $\alpha>0$ 满足 $\pts$, 对于任意的 $(y_i,z_i)\in\rtn\times\rtn^d$ $(i=1,2)$,
+       \begin{equation*}
+         |g(t,y_1,z_1)-g(t,y_2,z_2)|\leq \mu|y_1-y_2|+\mu|z_1-z_2|^\alpha.
+       \end{equation*}
+\end{enumerate}
+
+\begin{remark}
+  本节最主要的假设 \ref{HInFiniteTimeInterval:LipschitzAndAlphaHolder} 等价于下
+  面的两个条件:
+  \begin{enumerate}
+    \renewcommand{\theenumi}{(H\arabic{enumi})}
+    \renewcommand{\labelenumi}{\theenumi}
+
+    \item $g$ 关于 $y$ 满足对 $(\omega,t,z)$ 一致的 Lipschitz 连续条件, 即存在一
+          个常数 $\mu>0$ 使得 $\pts$,
+          $$\forall y_1,y_2,z, \quad |g(t,y_1,z)-g(t,y_2,z)|\leq\mu|y_1-y_2|;$$
+    \item $g$ 关于 $z$ 满足对 $(\omega,t,y)$ 一致的 H\"older 连续条件, 即存在两个
+          常数 $\mu$, $\alpha>0$ 使得 $\pts$,
+          $$\forall y,z_1,z_2,\quad |g(t,y,z_1)-g(t,y,z_2)|\leq\mu|z_1-z_2|^\alpha.$$
+  \end{enumerate}
+\end{remark}
+
+
+下面的定理 \ref{thm:FiniteTimeIntervalL1Solution} 是本节的主要结果.
+
+\begin{theorem}\label{thm:FiniteTimeIntervalL1Solution}
+  假设 \ref{HInFiniteTimeInterval:OnlyIntegrable} 和 \ref{HInFiniteTimeInterval:LipschitzAndAlphaHolder}
+  成立且 $\alpha\in(0,1)$, 则 BSDE \eqref{eq:BSDEsInFiniteTimeInterval} 存在惟一
+  解 $(y_t,z_t)_{t\in\tT}$ 使得 $(y_t)_{t\in\tT}$ 属于 (D) 类, 且
+  $(z_t)_{t\in\tT}$ 属于空间 $\bigcup_{\beta>\alpha}\Mm^\beta$. 进一步地, 对于任意的
+  $\beta\in(0,1)$,
+  $(y_t,z_t)_{t\in\tT}$ 属于空间 $\s^\beta\times\Mm^\beta$.
+\end{theorem}
+
+\begin{example}
+  令 $g(t,y,z)=\sin y+\sqrt{|z|}+|B_t|$. 则由定理 \ref{thm:FiniteTimeIntervalL1Solution}
+  可得, 对于任意的 $\xi\in L^1(\Omega,\F_T,\PR)$, BSDE \eqref{eq:BSDEsInFiniteTimeInterval}
+  存在惟一解 $(y_t,z_t)_{t\in\tT}$ 使得 $(y_t)_{t\in\tT}$~
+  属于 (D) 类且
+   $(z_t)_{t\in\tT}$ 属于 $\bigcup_{\beta>1/2}\Mm^\beta$.
+\end{example}
+
+为介绍 \citet*{BriandDelyonHu2003SPA} 中的结果, 我们做如下假设:
+  \begin{enumerate}
+    \renewcommand{\theenumi}{(B\arabic{enumi}')}
+    \renewcommand{\labelenumi}{\theenumi}
+    \setcounter{enumi}{1}
+
+%    \item \label{HBriandDelyon:OnlyIntegrable}
+%          $\EX\left[|\xi|+\intT{0}|g(s,0,0)|\dif s\right]<+\infty$;
+    \item \label{HBriandDelyon:gContinuousInY}
+          $\pts$, 对于任意的 $z$, $y\mapsto g(\omega,t,y,z)$ 连续;
+    \item \label{HBriandDelyon:gMonotonicInY}
+          $g$ 关于 $y$ 单调, 即存在一个常数 $\mu\geq 0$ 使得 $\pts$,
+          $$\forall y_1,y_2,z, \quad \big(g(t,y_1,z)-g(t,y_2,z)\big)(y_1-y_2)\leq \mu|y_1-y_2|^2;$$
+    \item \label{HBriandDelyon:gGeneralGrowthInY}
+          $g$ 关于 $y$ 满足一般增长条件, 即对于任意的 $r>0$, 有
+          $$\varphi_r(t):=\sup_{|y|\leq r}|g(t,y,0)-g(t,0,0)|\in L^1(\tT\times\Omega);$$
+    \item \label{HBriandDelyon:gLipschitzContinuousInZ}
+          $g$ 关于 $z$ 是 Lipschitz 连续的, 且关于 $(\omega,t,y)$ 一致, 即存在
+          常数 $\lambda\geq 0$ 使得 $\pts$,
+          $$\forall y,z_1,z_2,\quad |g(t,y,z_1)-g(t,y,z_2)|\leq\lambda|z_1-z_2|;$$
+    \item \label{HBriandDelyon:gSublinearGrowthInZ}
+          存在两个常数 $\gamma\geq 0$, $\alpha\in(0,1)$ 和一个非负 $(\F_t)$-循序
+          可测过程 $(g_t)_{t\in\tT}$ 且 $\EX[\intT{0}g_t\dif t]<+\infty$, 使得 $\pts$,
+          $$\forall y,z, \quad |g(t,y,z)-g(t,y,0)|\leq \gamma(g_t+|y|+|z|)^\alpha.$$
+  \end{enumerate}
+
+下面的引理 \ref{lem:BriandDelyonL1Solution} 是 \citet*{BriandDelyonHu2003SPA} 中定理
+ 6.2 和定理 6.3 的一维版本.
+
+\begin{lemma}\label{lem:BriandDelyonL1Solution}
+  假设 \ref{HInFiniteTimeInterval:OnlyIntegrable}, \ref{HBriandDelyon:gContinuousInY} -- \ref{HBriandDelyon:gSublinearGrowthInZ}
+  成立, 则 BSDE $(\xi,T,g)$ 存在惟一解 $(y_t,z_t)_{t\in\tT}$ 使得, $(y_t)_{t\in\tT}$
+  属于 (D) 类且 $(z_t)_{t\in\tT}$ 属于 $\bigcup_{\beta>\alpha}\Mm^\beta$. 进一步地,
+  对于任意的 $\beta\in(0,1)$, $(y_t,z_t)_{t\in\tT}$ 属于空间 $\s^\beta\times\Mm^\beta$.
+\end{lemma}
+
+下面我们开始证明定理 \ref{thm:FiniteTimeIntervalL1Solution}.
+
+我们首先建立如下命题 \ref{pro:ComparisonTheoremInFiniteTimeInterval}, 定理
+ \ref{thm:FiniteTimeIntervalL1Solution} 的惟一性部分是此命题的直接推论.
+
+\begin{proposition}\label{pro:ComparisonTheoremInFiniteTimeInterval}
+  假设生成元 $g$ 满足 \ref{HInFiniteTimeInterval:LipschitzAndAlphaHolder} 且
+  $\alpha\in(0,1]$, 令 $(y_t,z_t)_{t\in\tT}$ 和 $(y'_t,z'_t)_{t\in\tT}$ 分别表示
+   BSDE $(\xi,T,g)$ 和 BSDE $(\xi',T,g)$ 的解, 使得 $(y_t)_{t\in\tT}$ 和 $(y'_t)_{t\in\tT}$
+  都属于 (D) 类, 且 $(z_t)_{t\in\tT}$ 和 $(z'_t)_{t\in\tT}$ 都属于
+   $\bigcup_{\beta>\alpha}\Mm^\beta$. 如果 $\prs$, $\xi\leq\xi'$, 则对于任意的 $t\in\tT$,
+  有
+  $$\prs, \quad y_t\leq y'_t.$$
+\end{proposition}
+
+\begin{proof}
+  此命题的证明借鉴于 \citet*{BriandDelyonHu2003SPA}. 我们先固定 $n\in\N$, 且令 $\tau_n$
+  表示停时
+  \begin{equation*}
+    \tau_n=\inf\left\{t\in\tT:\int^t_0\left(|z_s|^2+|z'_s|^2\right)\dif s
+    \geq n\right\}\wedge T.
+  \end{equation*}
+  令 $\hat{y}_t=y_t-y'_t$, $\hat{z}_t=z_t-z'_t$, 则对 $\me^{\mu t}\hat{y}_t$
+  作用 Tanaka 公式可以得到
+   \begin{align*}
+     \me^{\mu(t\wedge\tau_n)}\hat{y}^+_{t\wedge\tau_n}
+     \leq &\ \me^{\mu\tau_n}\hat{y}^+_{\tau_n}
+       -\intT[\tau_n]{t\wedge\tau_n}\me^{\mu s}
+        \one{\hat{y}_s>0}\hat{z}_s\cdot\dif B_s\nonumber\\
+     &+\intT[\tau_n]{t\wedge\tau_n}\me^{\mu s}
+        \left\{
+          \one{\hat{y}_s>0}
+          [g(s,y_s,z_s)-g(s,y'_s,z'_s)]-\mu\hat{y}^+_s
+        \right\}\dif s.
+   \end{align*}
+  由假设 \ref{HInFiniteTimeInterval:LipschitzAndAlphaHolder} 可得,
+  \begin{equation}\label{eq:TanakaResultInProofOfUniquenessFiniteTimeInterval}
+    \me^{\mu(t\wedge\tau_n)}\hat{y}^+_{t\wedge\tau_n}
+    \leq \me^{\mu\tau_n}\hat{y}^+_{\tau_n}
+      +\intT[\tau_n]{t\wedge\tau_n}\mu\me^{\mu s}
+         \one{\hat{y}_s>0}|\hat{z}_s|^\alpha\dif s
+      -\intT[\tau_n]{t\wedge\tau_n}\me^{\mu s}
+       \one{\hat{y}_s>0}\hat{z}_s\cdot\dif B_s.
+  \end{equation}
+  对上式左右两侧关于 $\F_t$ 取条件期望并注意到 $\tau_n\leq T$ 可得,
+  \begin{equation*}
+    \me^{\mu(t\wedge\tau_n)}\hat{y}^+_{t\wedge\tau_n}
+    \leq \me^{\mu T}\EX
+         \left[\left.
+           \hat{y}^+_{\tau_n}
+           +\mu\intT[\tau_n]{t\wedge\tau_n}|\hat{z}_s|^\alpha\dif s
+           \right|\F_t
+         \right]
+    \leq \me^{\mu T}\EX
+         \left[\left.
+           \hat{y}^+_{\tau_n}
+           +\mu\intT{0}|\hat{z}_s|^\alpha\dif s
+           \right|\F_t
+         \right].
+  \end{equation*}
+  下面我们先证明 $(\hat{y}^+_t)_{t\in\tT}\in\s$. 由于 $(y_t)_{t\in\tT}$ 和
+   $(y'_t)_{t\in\tT}$ 都属于 (D) 类, $(\hat{z}_t)_{t\in\tT}\in\bigcup_{\beta>\alpha}\Mm^\beta$,
+  并且考虑到 $\xi\leq\xi'$, 于是在上不等式中令 $n\to\infty$ 可得, 对于任意的 $t\in\tT$,
+  \begin{equation*}
+    \hat{y}^+_t\leq\mu\me^{\mu(T-t)}\EX
+    \left[\left.
+      \intT{0}|\hat{z}_s|^\alpha\dif s\right|\F_t
+    \right],
+  \end{equation*}
+  然后根据 Jensen 不等式, Doob 不等式和 H\"older 不等式可得, 存在一个仅依赖于
+   $\alpha$ 和 $\beta$ 的常数 $C$ 使得
+  \begin{equation*}
+    \EX
+    \left[
+      \sup_{t\in\tT}|\hat{y}^+_t|^{\beta/\alpha}
+    \right]
+    \leq C\EX
+         \left[
+           \left(
+             \intT{0}|\hat{z}_s|^2\dif s
+           \right)^{\beta/2}
+         \right]<+\infty.
+  \end{equation*}
+  从而得出 $(\hat{y}^+_t)_{t\in\tT}\in\s$.
+
+  下面我们介绍一个对后面的证明起到关键作用的不等式, 是关于函数
+   $x^\alpha$ ($\alpha\in(0,1]$) 的一个简单估计:
+  \begin{equation}\label{eq:SimpleEstimateOnXAlpha}
+    \forall m\geq 1, x\in\rtn^+,\quad x^\alpha\leq mx+\frac{1}{m^\alpha}.
+  \end{equation}
+  事实上, 如果 $0\leq x\leq 1/m$, 由于 $x^\alpha\leq 1/m^\alpha$, 那么
+   \eqref{eq:SimpleEstimateOnXAlpha} 显然成立. 如果 $1/m<x<1$, 那么 $mx>1>x^\alpha$.
+  如果 $x\geq 1$, 仍然有 $mx\geq x\geq x^\alpha$.
+
+  对于任意的 $m\geq 1$, 由 \eqref{eq:TanakaResultInProofOfUniquenessFiniteTimeInterval}
+  和 \eqref{eq:SimpleEstimateOnXAlpha} 可得,
+  \begin{align}\label{eq:GirsanovChangeInComparisonTheoremProof}
+    \me^{\mu(t\wedge\tau_n)}\hat{y}^+_{t\wedge\tau_n}
+    &\leq \me^{\mu\tau_n}\hat{y}^+_{\tau_n}
+         +\intT[\tau_n]{t\wedge\tau_n}\mu\me^{\mu s}\one{\hat{y}_s>0}
+          \left[
+            m|\hat{z}_s|+\frac{1}{m^\alpha}
+          \right]\dif s
+         -\intT[\tau_n]{t\wedge\tau_n}\me^{\mu s}\one{\hat{y}_s>0}\hat{z}_s\cdot\dif B_s\nonumber\\
+    &\leq \me^{\mu\tau_n}\hat{y}^+_{\tau_n}
+          \!+\!T\me^{\mu T}\frac{\mu}{m^\alpha}
+          -\!\intT[\tau_n]{t\wedge\tau_n}\!\!\!\me^{\mu s}\one{\hat{y}_s>0}\hat{z}_s\cdot\!
+          \left[
+            -\frac{m\mu\hat{z}_s}{|\hat{z}_s|}\one{|\hat{z}_s|\neq 0}\dif s+\!\dif B_s
+          \right]\!.
+  \end{align}
+  令 $\PR_m$ 表示在概率空间 $(\Omega,\F)$ 中与 $\PR$ 等价的概率测度, 定义为
+  \begin{equation*}
+    \frac{\dif \PR_m}{\dif \PR}:=\exp
+    \left\{
+      m\mu\intT{0}\frac{\hat{z}_s}{|\hat{z}_s|}\one{|\hat{z}_s|\neq 0}\cdot\dif B_s
+      -\frac{1}{2}m^2\mu^2\intT{0}\one{|\hat{z}_s|\neq 0}\dif s
+    \right\}.
+  \end{equation*}
+  值得注意的是, $\dif\PR_m/\dif\PR$ 有任意阶矩. 由 Girsanov 定理, 在 $\PR_m$ 测
+  度下, 随机过程
+  $$B_m(t)=B_t-\intT[t]{0}\frac{m\mu\hat{z}_s}{|\hat{z}_s|}\one{|\hat{z}_s|\neq 0}\dif s, \quad t\in\tT$$
+  是一个 $(\F_t,\PR_m)$-布朗运动. 此外, 随机过程
+  $$\left(\intT[t\wedge\tau_n]{0}\me^{\mu s}\one{\hat{y}_s>0}\hat{z}_s\cdot\dif B_m(s)\right)_{0\leq t\leq T}$$
+  是一个 $(\F_t,\PR_m)$-鞅. 令 $\EX_m[X|\F_t]$ 表示随机变量 $X$ 关于 $\F_t$
+  在 $\PR_m$ 概率下的条件期望. 对~\eqref{eq:GirsanovChangeInComparisonTheoremProof}
+  两侧关于 $\F_t$ 在 $\PR_m$ 概率下取条件期望, 可以得到, 对于任意的 $m\geq 1$, $t\in\tT$,
+  \begin{equation}\label{eq:AfterGirsanovChangeInComparisonTheoremProof}
+    \me^{\mu(t\wedge\tau_n)}\hat{y}^+_{t\wedge\tau_n}
+    \leq \EX_m
+         \left[\left.
+           \me^{\mu\tau_n}\hat{y}^+_{\tau_n}\right|\F_t
+         \right]
+         +\frac{T\me^{\mu T}\mu}{m^\alpha}.
+  \end{equation}
+
+  最后, 既然 $(\hat{y}^+_t)_{t\in\tT}\in\s$, 并且考虑到 $\xi\leq\xi'$, 我们可以
+  在 \eqref{eq:AfterGirsanovChangeInComparisonTheoremProof} 中令 $n\to\infty$,
+  于是对于任意的 $m\geq 1$, $t\in\tT$,
+  \begin{equation*}
+    \me^{\mu t}\hat{y}^+_{t}\leq T\me^{\mu T}\frac{\mu}{m^\alpha},
+  \end{equation*}
+  因此通过令 $m\to\infty$ 可以得出命题 \ref{pro:ComparisonTheoremInFiniteTimeInterval}
+  的结论.
+\end{proof}
+
+有了命题 \ref{pro:ComparisonTheoremInFiniteTimeInterval}, 定理 \ref{thm:FiniteTimeIntervalL1Solution}
+的惟一性部分即可直接得出.
+

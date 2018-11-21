@@ -1,0 +1,195 @@
+\appendix{公式推导}
+生成元 $g$ 满足如下条件
+\begin{itemize}
+  \item[(H)] $g$ 关于 $(y,z)$ 满足对 $t$ 不一致的线性增长条件, 即存在两个确定性
+             函数 $u(\cdot)$, $v(\cdot):[0,T]\mapsto\rtn_+$ 满足条件
+              $\intT{0}[u(t)+v^2(t)]\dif t<+\infty$ 及一个 $(\F_t)$-循序可测的非
+             负过程 $\{f_t\}_{t\in[0,T]}$ 满足条件 $\EX[(\int^T_0 f_t\dif t)^p]<+\infty$,
+             使得
+             $$\pts,\forall y,z, \langle\hat{y},g(t,y,z)\rangle\leq u(t)|y|+v(t)|z|+f_t.$$
+\end{itemize}
+
+在上述假设下建立先验估计.
+
+\begin{lemma}\label{lemma:i}
+  设 $T\leq+\infty$ 且 $g$ 满足假设 (H), 则存在一个仅依赖于 $p$ 的常数 $C_p>0$,
+  使得对每个 $t\in\tT[0]$, 有
+  \begin{align}
+    & \EX\left[
+          \left(
+             \int^T_t|z_s|^2\dif s
+          \right)^{p\over 2}
+       \right]\nonumber\\
+    & \leq \ C_p
+       \left[
+          \EX|\xi|^p+\EX
+          \left[
+             \sup_{s\in\tT}|y_s|^p
+          \right]\cdot
+             \left(
+                1+\frac{d^2_p}{2}+
+                  \left(
+                     \int^T_t\left(u(s)+v^2(s)\right)\dif s
+                  \right)^{p\over 2}
+             \right)
+       \right.\nonumber\\
+    &\quad\ +\left.\EX
+            \left[
+               \left(\int^T_t f_s\dif s\right)^p
+            \right]
+         \right].
+  \end{align}
+\end{lemma}
+\begin{proof}
+对 $|y_t|^2$ 使用 \Ito{} 公式得到:
+\begin{equation}
+  |y_t|^2+\int^T_t |z_s|^2\dif s=
+  |\xi|^2+
+  2\int^T_t\langle y_s g(s,y_s,z_s)\rangle\dif s
+  -2\int^T_t\langle y_s,z_s\dif B_s\rangle,
+\end{equation}
+由假设 (H) 可知, $\forall s\in\tT$,
+\begin{align*}
+  2\langle y_s,g(s,y_s,z_s)\rangle & \leq 2|y_s|\big(u(s)|y_s|+v(s)|z_s|+f_s\big)\\
+          & \leq 2\left[u(s)+v^2(s)\right]\sup_{s\in\tT}|y_s|^2+\frac{|z_s|^2}{2}+2|y_s|f_s,
+\end{align*}
+故有
+\begin{align*}
+  \frac{1}{2}\int^T_t |z_s|^2\dif s \leq &\ |\xi|^2+2\sup_{s\in\tT}|y_s|^2\cdot
+        \int^T_t\big(u(s)+v^2(s)\big)\dif s\\
+        & +2\sup_{s\in\tT}|y_s|\cdot\int^T_t f_s\dif s
+          +2\left|\int^T_t\langle y_s,z_s\dif B_s\rangle\right|,
+\end{align*}
+因而
+\begin{align*}
+  \left(\int^T_t |z_s|^2\dif s\right)^{p\over 2} \leq &\  c_p\left[|\xi|^p
+          +2\sup_{s\in\tT}|y_s|^p\cdot\left(\int^T_t\left(u(s)+v^2(s)\right)
+           \dif s\right)^{p\over 2}\right.\\
+         & +\left.\sup_{s\in\tT}|y_s|^p+\left(\int^T_t f_s\dif s\right)^p
+           +\left|\int^T_t\langle y_s,z_s\dif B_s\rangle\right|^{p\over 2}\right],
+\end{align*}
+由 BDG 不等式可以得到
+\begin{align*}
+  c_p\EX\left[\left|\int^T_t\langle y_s,z_s\dif B_s\rangle\right|^{p\over 2}\right]
+    &\leq d_p\EX\left[\sup_{s\in\tT}|y_s|^{p\over 2}\left(\int^T_t|z_s|^2\dif s\right)^{p\over 4}\right]\\
+    &\leq {d^2_p\over 2}\EX\left[\sup_{s\in\tT}|y_s|^p\right]
+          +\frac{1}{2}\EX\left[\left(\int^T_t|z_s|^2\dif s\right)^{p\over 2}\right],
+\end{align*}
+故有
+\begin{align*}
+  \EX\!\!\left[\!
+        \left(
+           \int^T_t\!\!\!|z_s|^2\dif s
+        \right)^{p\over 2}\!
+     \right]\!\!
+     \leq &\ c_p
+     \left[\!
+        \EX|\xi|^p+\EX\!\!
+        \left[\!
+           \sup_{s\in\tT}|y_s|^p\!
+        \right]\!\cdot\!
+           \left(\!
+              1+\frac{d^2_p}{2}+
+                \left(
+                   \int^T_t\!\!\left(\!u(s)+v^2(s)\!\right)\!\!\dif s
+                \right)^{p\over 2}\!
+           \right)\!
+     \right.\\
+     & +\left.\EX\!
+          \left[\!
+             \left(\!\int^T_t\!\! f_s\dif s\!\right)^p
+          \right]\!
+       \right].
+\end{align*}
+至此, 引理 \ref{lemma:i} 证明完毕.
+\end{proof}
+
+\begin{remark}
+  $p>0$ 时引理 \ref{lemma:i} 仍然成立. 如果 $y\in\s^p$, 使用停时处理.
+\end{remark}
+
+
+\appendix{编程代码}
+
+\begin{lstlisting}[language={[ANSI]C},numbers=left,numberstyle=\tiny,%frame=shadowbox,
+  %rulesepcolor=\color{red!20!green!20!blue!20},
+  keywordstyle=\color{blue!70!black},
+  commentstyle=\color{red!50!green!50!blue!50},
+  basicstyle=\ttfamily]
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#define MAX_LEN  10
+typedef struct _DATA_ {
+ int value;
+ _DATA_ *next;
+}DATA;
+void main()
+{
+ int i;
+ char ch;
+ char str[MAX_LEN + 1];
+ DATA *pdata, *ptem, *ppre;
+ pdata = (DATA *)malloc(sizeof(DATA));
+ pdata->next = pdata;
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+
+ // Input
+ while (1) {
+  for (i = 0; i < MAX_LEN; i++) {
+   ch = (char)getch();
+   printf("%c", ch);
+   if (ch == ' ')
+    break;
+   str[i] = ch;
+  }
+\end{lstlisting}
